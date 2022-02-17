@@ -11,17 +11,17 @@ public class Sort
             int minIndex = j;
             for (int k = j + 1; k < elements.length; k++)
             {
+                counter++;
                 if (elements[k] < elements[minIndex])
                 {
                     minIndex = k;
                 }
-                counter++;
             }
             int temp = elements[j];
             elements[j] = elements[minIndex];
             elements[minIndex] = temp;
         }
-        System.out.println(counter);
+        System.out.println("Selection sort, number of iterations: " + counter);
     }
 
     public static void insertionSort(int[] elements)
@@ -33,13 +33,13 @@ public class Sort
             int possibleIndex = j;
             while (possibleIndex > 0 && temp < elements[possibleIndex - 1])
             {
+                counter++;
                 elements[possibleIndex] = elements[possibleIndex - 1];
                 possibleIndex--;
-                counter++;
             }
             elements[possibleIndex] = temp;
         }
-        System.out.println(counter);
+        System.out.println("Insertion sort, number of iterations: " + counter);
     }
 
     // Part C.  Sorting a 1000-word list!
@@ -66,8 +66,8 @@ public class Sort
         for (int i = 1; i < words.size(); i++) {
             String temp = words.get(i);
             int possibleIndex = i;
-            while (possibleIndex > 0 && words.get(i).compareTo(words.get(i - 1)) < 1) {
-                words.set(i, words.get(i - 1));
+            while (possibleIndex > 0 && temp.compareTo(words.get(possibleIndex - 1)) < 0) {
+                words.set(possibleIndex, words.get(possibleIndex - 1));
                 possibleIndex--;
             }
             words.set(possibleIndex, temp);
